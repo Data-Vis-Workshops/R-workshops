@@ -1,5 +1,4 @@
 ---
-title: "![A Week of R at UNL](figure/header.png)"
 format: 
   gfm: default
 number-sections: true
