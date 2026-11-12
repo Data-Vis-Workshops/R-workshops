@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>R Workshops – Data Structures</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -209,20 +212,20 @@
 <li>There are some functions in R that will require your data to be arranged as a matrix.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Creating a matrix (3x3)</span></span>
-<span id="cb1-2"><a></a>row_matrix <span class="ot">&lt;-</span>  <span class="fu">matrix</span>(</span>
-<span id="cb1-3"><a></a>  <span class="co"># Taking sequence of elements </span></span>
-<span id="cb1-4"><a></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
-<span id="cb1-5"><a></a>  <span class="co"># Number of rows</span></span>
-<span id="cb1-6"><a></a>  <span class="at">nrow =</span> <span class="dv">3</span>,  </span>
-<span id="cb1-7"><a></a>  <span class="co"># No. of columns</span></span>
-<span id="cb1-8"><a></a>  <span class="at">ncol =</span> <span class="dv">3</span>,        </span>
-<span id="cb1-9"><a></a>  <span class="co"># By default matrices are in column-wise order</span></span>
-<span id="cb1-10"><a></a>  <span class="co"># So this parameter decides how to arrange the matrix</span></span>
-<span id="cb1-11"><a></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         </span>
-<span id="cb1-12"><a></a>)</span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a>row_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Creating a matrix (3x3)</span></span>
+<span id="cb1-2"><a aria-label="2"></a>row_matrix <span class="ot">&lt;-</span>  <span class="fu">matrix</span>(</span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="co"># Taking sequence of elements </span></span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb1-5"><a aria-label="5"></a>  <span class="co"># Number of rows</span></span>
+<span id="cb1-6"><a aria-label="6"></a>  <span class="at">nrow =</span> <span class="dv">3</span>,  </span>
+<span id="cb1-7"><a aria-label="7"></a>  <span class="co"># No. of columns</span></span>
+<span id="cb1-8"><a aria-label="8"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,        </span>
+<span id="cb1-9"><a aria-label="9"></a>  <span class="co"># By default matrices are in column-wise order</span></span>
+<span id="cb1-10"><a aria-label="10"></a>  <span class="co"># So this parameter decides how to arrange the matrix</span></span>
+<span id="cb1-11"><a aria-label="11"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span>         </span>
+<span id="cb1-12"><a aria-label="12"></a>)</span>
+<span id="cb1-13"><a aria-label="13"></a></span>
+<span id="cb1-14"><a aria-label="14"></a>row_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    2    3
@@ -234,13 +237,13 @@
 <section id="naming-rows-and-columns-in-matrices" class="slide level2">
 <h2>Naming Rows and Columns in Matrices</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Naming rows</span></span>
-<span id="cb3-2"><a></a><span class="fu">rownames</span>(row_matrix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"r1"</span>, <span class="st">"r2"</span>, <span class="st">"r3"</span>)</span>
-<span id="cb3-3"><a></a>  </span>
-<span id="cb3-4"><a></a><span class="co"># Naming columns</span></span>
-<span id="cb3-5"><a></a><span class="fu">colnames</span>(row_matrix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"c1"</span>, <span class="st">"c2"</span>, <span class="st">"c3"</span>)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a>row_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Naming rows</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="fu">rownames</span>(row_matrix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"r1"</span>, <span class="st">"r2"</span>, <span class="st">"r3"</span>)</span>
+<span id="cb3-3"><a aria-label="3"></a>  </span>
+<span id="cb3-4"><a aria-label="4"></a><span class="co"># Naming columns</span></span>
+<span id="cb3-5"><a aria-label="5"></a><span class="fu">colnames</span>(row_matrix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"c1"</span>, <span class="st">"c2"</span>, <span class="st">"c3"</span>)</span>
+<span id="cb3-6"><a aria-label="6"></a></span>
+<span id="cb3-7"><a aria-label="7"></a>row_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   c1 c2 c3
 r1  1  2  3
@@ -253,19 +256,19 @@ r3  7  8  9</code></pre>
 <h2>Indexing Elements in a Matrix</h2>
 <p>If only need certain elements in a matrix, you can index them</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#matrix[row,col]</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>row_matrix[<span class="dv">1</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="co">#matrix[row,col]</span></span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>row_matrix[<span class="dv">1</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>c1 c2 c3 
  1  2  3 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>row_matrix[,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>row_matrix[,<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>r1 r2 r3 
  1  4  7 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>row_matrix[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>row_matrix[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>r1 r3 
  2  8 </code></pre>
@@ -275,24 +278,24 @@ r3  7  8  9</code></pre>
 <section id="matrix-multiplication" class="slide level2">
 <h2>Matrix Multiplication</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb11-2"><a></a>A</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb11-2"><a aria-label="2"></a>A</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    3
 [2,]    2    4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>), <span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#would print out similarily</span></span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a>A<span class="sc">%*%</span>B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>), <span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#would print out similarily</span></span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a>A<span class="sc">%*%</span>B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]   23   31
 [2,]   34   46</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Note * does element by element multiplication</span></span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a><span class="fu">t</span>(A) <span class="co">#transpose of A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="co"># Note * does element by element multiplication</span></span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a><span class="fu">t</span>(A) <span class="co">#transpose of A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    2
@@ -352,9 +355,9 @@ r3  7  8  9</code></pre>
 <h2>Data Frame Demo</h2>
 <p>Use <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Edgar Anderson’s Iris Data</a>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>flower <span class="ot">&lt;-</span> iris</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a><span class="fu">head</span>(flower)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>flower <span class="ot">&lt;-</span> iris</span>
+<span id="cb18-2"><a aria-label="2"></a></span>
+<span id="cb18-3"><a aria-label="3"></a><span class="fu">head</span>(flower)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 1          5.1         3.5          1.4         0.2  setosa
@@ -370,7 +373,7 @@ r3  7  8  9</code></pre>
 <h2>Data Frame Demo</h2>
 <p>Select Species column (5th column):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>flower[,<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a>flower[,<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
   [7] setosa     setosa     setosa     setosa     setosa     setosa    
@@ -405,7 +408,7 @@ Levels: setosa versicolor virginica</code></pre>
 <h2>Demo (Continued)</h2>
 <p>Select Species column with the <code>$</code> operator:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>flower<span class="sc">$</span>Species</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>flower<span class="sc">$</span>Species</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
   [7] setosa     setosa     setosa     setosa     setosa     setosa    
@@ -439,7 +442,7 @@ Levels: setosa versicolor virginica</code></pre>
 <section id="demo-continued-1" class="slide level2">
 <h2>Demo (Continued)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>flower<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>flower<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
@@ -460,7 +463,7 @@ Levels: setosa versicolor virginica</code></pre>
 <section id="demo-continued-2" class="slide level2">
 <h2>Demo (Continued)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>flower[flower<span class="sc">$</span>Species<span class="sc">==</span><span class="st">"setosa"</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>flower[flower<span class="sc">$</span>Species<span class="sc">==</span><span class="st">"setosa"</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 1           5.1         3.5          1.4         0.2  setosa
@@ -519,22 +522,22 @@ Levels: setosa versicolor virginica</code></pre>
 <section id="demo-continued-3" class="slide level2">
 <h2>Demo (Continued)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>two_sepal_width <span class="ot">&lt;-</span> flower<span class="sc">$</span>Sepal.Width <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb28-2"><a></a></span>
-<span id="cb28-3"><a></a>flower_new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(flower,two_sepal_width)</span>
-<span id="cb28-4"><a></a></span>
-<span id="cb28-5"><a></a><span class="fu">head</span>(flower_new, <span class="at">n=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>two_sepal_width <span class="ot">&lt;-</span> flower<span class="sc">$</span>Sepal.Width <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb28-2"><a aria-label="2"></a></span>
+<span id="cb28-3"><a aria-label="3"></a>flower_new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(flower,two_sepal_width)</span>
+<span id="cb28-4"><a aria-label="4"></a></span>
+<span id="cb28-5"><a aria-label="5"></a><span class="fu">head</span>(flower_new, <span class="at">n=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species two_sepal_width
 1          5.1         3.5          1.4         0.2  setosa             7.0
 2          4.9         3.0          1.4         0.2  setosa             6.0
 3          4.7         3.2          1.3         0.2  setosa             6.4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ncol</span>(flower)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">ncol</span>(flower)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">ncol</span>(flower_new)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="fu">ncol</span>(flower_new)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -544,12 +547,12 @@ Levels: setosa versicolor virginica</code></pre>
 <h2>Creating our own Data Frame</h2>
 <p>Create our own data frame using <code>data_frame</code> function</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb34-2"><a></a></span>
-<span id="cb34-3"><a></a>mydf <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">NUMS =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
-<span id="cb34-4"><a></a>                   <span class="at">lets =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
-<span id="cb34-5"><a></a>                   <span class="at">vehicle =</span> <span class="fu">c</span>(<span class="st">"car"</span>, <span class="st">"boat"</span>, <span class="st">"car"</span>, <span class="st">"car"</span>, <span class="st">"boat"</span>))</span>
-<span id="cb34-6"><a></a>mydf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb34-2"><a aria-label="2"></a></span>
+<span id="cb34-3"><a aria-label="3"></a>mydf <span class="ot">&lt;-</span> <span class="fu">data_frame</span>(<span class="at">NUMS =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
+<span id="cb34-4"><a aria-label="4"></a>                   <span class="at">lets =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb34-5"><a aria-label="5"></a>                   <span class="at">vehicle =</span> <span class="fu">c</span>(<span class="st">"car"</span>, <span class="st">"boat"</span>, <span class="st">"car"</span>, <span class="st">"car"</span>, <span class="st">"boat"</span>))</span>
+<span id="cb34-6"><a aria-label="6"></a>mydf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
    NUMS lets  vehicle
@@ -566,8 +569,8 @@ Levels: setosa versicolor virginica</code></pre>
 <h2>Renaming columns</h2>
 <p>We can use the <code>names</code> function to set that first column to lowercase:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">names</span>(mydf)[<span class="dv">1</span>]<span class="ot">&lt;-</span> (<span class="st">"nums"</span>)</span>
-<span id="cb36-2"><a></a>mydf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a><span class="fu">names</span>(mydf)[<span class="dv">1</span>]<span class="ot">&lt;-</span> (<span class="st">"nums"</span>)</span>
+<span id="cb36-2"><a aria-label="2"></a>mydf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
    nums lets  vehicle
@@ -613,9 +616,9 @@ Levels: setosa versicolor virginica</code></pre>
 <h2>List Example</h2>
 <p>Creating a list containing a vector and a matrix:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>),</span>
-<span id="cb38-2"><a></a>               <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">49</span>, <span class="at">by =</span> <span class="dv">7</span>))</span>
-<span id="cb38-3"><a></a>mylist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>),</span>
+<span id="cb38-2"><a aria-label="2"></a>               <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">49</span>, <span class="at">by =</span> <span class="dv">7</span>))</span>
+<span id="cb38-3"><a aria-label="3"></a>mylist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
      [,1] [,2] [,3] [,4] [,5]
@@ -628,7 +631,7 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <p>Use indexing to select the second list element:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0  7 14 21 28 35 42 49</code></pre>
 </div>
@@ -657,7 +660,7 @@ Levels: setosa versicolor virginica</code></pre>
 <h2>Examining Objects Example</h2>
 <p>We can examine the first two values of an object by passing the <code>n</code> parameter to the <code>head</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">head</span>(iris, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a><span class="fu">head</span>(iris, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 1          5.1         3.5          1.4         0.2  setosa
@@ -666,7 +669,7 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <p>What’s its structure?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">str</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a><span class="fu">str</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -702,7 +705,7 @@ Levels: setosa versicolor virginica</code></pre>
 <li><p><code>t.test</code> function can only handle two groups, so we subset out the virginica species</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">t.test</span>(Petal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris[iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"virginica"</span>, ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-label="1"></a><span class="fu">t.test</span>(Petal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris[iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"virginica"</span>, ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -722,11 +725,11 @@ sample estimates:
 <h2>Demo (Continued)</h2>
 <p>Save the output of the t-test to an object</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>tout <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Petal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris[iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"virginica"</span>, ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-label="1"></a>tout <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Petal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris[iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"virginica"</span>, ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s look at the structure of this object:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">str</span>(tout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">str</span>(tout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 10
  $ statistic  : Named num -39.5
@@ -752,12 +755,12 @@ sample estimates:
 <h2>Demo: Extracting the P-Value</h2>
 <p>Since this is simply a list, we can use our regular indexing:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="co">#pvalue</span></span>
-<span id="cb51-2"><a></a>tout<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a><span class="co">#pvalue</span></span>
+<span id="cb51-2"><a aria-label="2"></a>tout<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.934433e-46</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>tout[[<span class="dv">3</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a>tout[[<span class="dv">3</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.934433e-46</code></pre>
 </div>
@@ -785,12 +788,12 @@ sample estimates:
 <p>We first create a csv file (We can use a text editor or MS Excel)</p>
 <p>Then we load it in:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="co"># df = iris[1:10, 1:5]</span></span>
-<span id="cb55-2"><a></a><span class="co"># write.csv(df, 'tips.csv')</span></span>
-<span id="cb55-3"><a></a></span>
-<span id="cb55-4"><a></a>littledata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"tips.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb55-5"><a></a></span>
-<span id="cb55-6"><a></a><span class="fu">head</span>(littledata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a><span class="co"># df = iris[1:10, 1:5]</span></span>
+<span id="cb55-2"><a aria-label="2"></a><span class="co"># write.csv(df, 'tips.csv')</span></span>
+<span id="cb55-3"><a aria-label="3"></a></span>
+<span id="cb55-4"><a aria-label="4"></a>littledata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"tips.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-5"><a aria-label="5"></a></span>
+<span id="cb55-6"><a aria-label="6"></a><span class="fu">head</span>(littledata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>I like to use <code>head()</code> to make sure my data read in how I thought it should .</p>
 </section>
@@ -807,7 +810,7 @@ sample estimates:
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">UNL R Workshops</a></p>
+<p><a href="../../index.html">R Workshops</a></p>
 </div>
 </div></div>
 

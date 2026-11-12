@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>R Workshops – Basic Statistical Tests</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -314,7 +317,7 @@
 <section id="penguins-data" class="slide level2">
 <h2>Penguins Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(penguins, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">data</span>(penguins, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="images/palmer-penguins.png" class="r-stretch"></section>
@@ -392,14 +395,14 @@
 <section id="two-sample-t-test" class="slide level2 smaller">
 <h2>Two-sample t-test</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">help</span>(t.test)</span>
-<span id="cb2-2"><a></a><span class="fu">t.test</span>(y <span class="sc">~</span> x, </span>
-<span id="cb2-3"><a></a>       <span class="at">data =</span> data_name,</span>
-<span id="cb2-4"><a></a>       <span class="at">alternative =</span> “two.sided”, </span>
-<span id="cb2-5"><a></a>       <span class="at">mu =</span> <span class="dv">0</span>, </span>
-<span id="cb2-6"><a></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb2-7"><a></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb2-8"><a></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">help</span>(t.test)</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="fu">t.test</span>(y <span class="sc">~</span> x, </span>
+<span id="cb2-3"><a aria-label="3"></a>       <span class="at">data =</span> data_name,</span>
+<span id="cb2-4"><a aria-label="4"></a>       <span class="at">alternative =</span> “two.sided”, </span>
+<span id="cb2-5"><a aria-label="5"></a>       <span class="at">mu =</span> <span class="dv">0</span>, </span>
+<span id="cb2-6"><a aria-label="6"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb2-7"><a aria-label="7"></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb2-8"><a aria-label="8"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><strong>y:</strong> The variable name of the quantitative response.</li>
@@ -414,8 +417,8 @@
 <aside class="notes">
 <p><strong>Test for equal variances</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(car)</span>
-<span id="cb3-2"><a></a><span class="fu">leveneTest</span>(penguins2<span class="sc">$</span>body_mass_g, <span class="at">group =</span> penguins2<span class="sc">$</span>sex, <span class="at">center =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(car)</span>
+<span id="cb3-2"><a aria-label="2"></a><span class="fu">leveneTest</span>(penguins2<span class="sc">$</span>body_mass_g, <span class="at">group =</span> penguins2<span class="sc">$</span>sex, <span class="at">center =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test for Homogeneity of Variance (center = mean)
        Df F value   Pr(&gt;F)   
@@ -444,8 +447,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><em>Alternative:</em> the mean body mass for female penguins is <strong>not</strong> equal to the mean body mass for male penguins (female - male <span class="math inline">\(\ne 0\)</span>)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins_ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, <span class="at">data =</span> penguins2) <span class="co">#&lt;&lt;</span></span>
-<span id="cb5-2"><a></a>penguins_ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>penguins_ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, <span class="at">data =</span> penguins2) <span class="co">#&lt;&lt;</span></span>
+<span id="cb5-2"><a aria-label="2"></a>penguins_ttest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -467,16 +470,16 @@ mean in group female   mean in group male
 <h2>Two-sample independent t-test (table results)</h2>
 <p><strong>Extract specific output</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins_ttest<span class="sc">$</span>statistic</span>
-<span id="cb7-2"><a></a>penguins_ttest<span class="sc">$</span>df</span>
-<span id="cb7-3"><a></a>penguins_ttest<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>penguins_ttest<span class="sc">$</span>statistic</span>
+<span id="cb7-2"><a aria-label="2"></a>penguins_ttest<span class="sc">$</span>df</span>
+<span id="cb7-3"><a aria-label="3"></a>penguins_ttest<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Summarize results with <code>library(broom)</code></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">install.packages</span>(<span class="st">"broom"</span>)</span>
-<span id="cb8-2"><a></a><span class="fu">library</span>(broom)</span>
-<span id="cb8-3"><a></a>penguins_results <span class="ot">&lt;-</span> <span class="fu">tidy</span>(penguins_ttest) <span class="co">#&lt;&lt;</span></span>
-<span id="cb8-4"><a></a>penguins_results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">install.packages</span>(<span class="st">"broom"</span>)</span>
+<span id="cb8-2"><a aria-label="2"></a><span class="fu">library</span>(broom)</span>
+<span id="cb8-3"><a aria-label="3"></a>penguins_results <span class="ot">&lt;-</span> <span class="fu">tidy</span>(penguins_ttest) <span class="co">#&lt;&lt;</span></span>
+<span id="cb8-4"><a aria-label="4"></a>penguins_results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -518,14 +521,14 @@ mean in group female   mean in group male
 <section id="two-sample-independent-t-test-graphical-results" class="slide level2">
 <h2>Two-sample independent t-test (graphical results)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(penguins_results, <span class="fu">aes</span>(<span class="at">x =</span> <span class="cn">NA</span>, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="fl">0.5</span>, <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb9-7"><a></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Difference in Body Mass </span><span class="sc">\n</span><span class="st"> (Female - Male)"</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">ggplot</span>(penguins_results, <span class="fu">aes</span>(<span class="at">x =</span> <span class="cn">NA</span>, <span class="at">y =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb9-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a aria-label="3"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a aria-label="4"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a aria-label="5"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a aria-label="6"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> <span class="fl">0.5</span>, <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb9-7"><a aria-label="7"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Difference in Body Mass </span><span class="sc">\n</span><span class="st"> (Female - Male)"</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a aria-label="8"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="2-BasicStatisticalTests_files/figure-revealjs/penguins-ttest-graph-results-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
@@ -546,19 +549,19 @@ mean in group female   mean in group male
 <li>What if you wanted the difference to be male - female?</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">levels</span>(penguins2<span class="sc">$</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">levels</span>(penguins2<span class="sc">$</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "female" "male"  </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins2<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(penguins2<span class="sc">$</span>sex, <span class="at">ref =</span> <span class="st">"male"</span>) <span class="co">#&lt;&lt;</span></span>
-<span id="cb12-2"><a></a><span class="fu">levels</span>(penguins2<span class="sc">$</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>penguins2<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(penguins2<span class="sc">$</span>sex, <span class="at">ref =</span> <span class="st">"male"</span>) <span class="co">#&lt;&lt;</span></span>
+<span id="cb12-2"><a aria-label="2"></a><span class="fu">levels</span>(penguins2<span class="sc">$</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "male"   "female"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins_ttest2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, <span class="at">data =</span> penguins2)</span>
-<span id="cb14-2"><a></a>penguins_ttest2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>penguins_ttest2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, <span class="at">data =</span> penguins2)</span>
+<span id="cb14-2"><a aria-label="2"></a>penguins_ttest2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -617,11 +620,11 @@ attr(,"conf.level")
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>penguins_ttest3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, </span>
-<span id="cb17-2"><a></a>                          <span class="at">data =</span> penguins2, </span>
-<span id="cb17-3"><a></a>                          <span class="at">conf.level =</span> <span class="fl">0.9</span>) <span class="co">#&lt;&lt;</span></span>
-<span id="cb17-4"><a></a>penguins_ttest3<span class="sc">$</span>p.value</span>
-<span id="cb17-5"><a></a>penguins_ttest3<span class="sc">$</span>conf.int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>penguins_ttest3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(body_mass_g <span class="sc">~</span> sex, </span>
+<span id="cb17-2"><a aria-label="2"></a>                          <span class="at">data =</span> penguins2, </span>
+<span id="cb17-3"><a aria-label="3"></a>                          <span class="at">conf.level =</span> <span class="fl">0.9</span>) <span class="co">#&lt;&lt;</span></span>
+<span id="cb17-4"><a aria-label="4"></a>penguins_ttest3<span class="sc">$</span>p.value</span>
+<span id="cb17-5"><a aria-label="5"></a>penguins_ttest3<span class="sc">$</span>conf.int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -692,17 +695,17 @@ island      Adelie Chinstrap Gentoo
 <section id="chi-square-test-of-independence-1" class="slide level2">
 <h2>Chi-square test of independence</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">help</span>(<span class="st">"chisq.test"</span>)</span>
-<span id="cb21-2"><a></a><span class="fu">chisq.test</span>(y <span class="sc">~</span> x, </span>
-<span id="cb21-3"><a></a>       <span class="at">data =</span> data_name,</span>
-<span id="cb21-4"><a></a>       <span class="at">simulate.p.value =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb21-5"><a></a>       <span class="at">B =</span> <span class="dv">2000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">help</span>(<span class="st">"chisq.test"</span>)</span>
+<span id="cb21-2"><a aria-label="2"></a><span class="fu">chisq.test</span>(y <span class="sc">~</span> x, </span>
+<span id="cb21-3"><a aria-label="3"></a>       <span class="at">data =</span> data_name,</span>
+<span id="cb21-4"><a aria-label="4"></a>       <span class="at">simulate.p.value =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-5"><a aria-label="5"></a>       <span class="at">B =</span> <span class="dv">2000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="chi-square-test-of-independence-2" class="slide level2">
 <h2>Chi-square test of independence</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">chisq.test</span>(penguins3<span class="sc">$</span>island, penguins3<span class="sc">$</span>species) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">chisq.test</span>(penguins3<span class="sc">$</span>island, penguins3<span class="sc">$</span>species) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -710,8 +713,8 @@ island      Adelie Chinstrap Gentoo
 data:  penguins3$island and penguins3$species
 X-squared = 299.55, df = 4, p-value &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">chisq.test</span>(penguins3<span class="sc">$</span>island, penguins3<span class="sc">$</span>species, </span>
-<span id="cb24-2"><a></a>           <span class="at">simulate.p.value =</span> T) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">chisq.test</span>(penguins3<span class="sc">$</span>island, penguins3<span class="sc">$</span>species, </span>
+<span id="cb24-2"><a aria-label="2"></a>           <span class="at">simulate.p.value =</span> T) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with simulated p-value (based on 2000
@@ -778,16 +781,16 @@ X-squared = 299.55, df = NA, p-value = 0.0004998</code></pre>
 <h2>Simple Regression</h2>
 <p><span class="math display">\[y = \text{intercept} + \text{slope} \cdot x + \text{error}\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">help</span>(lm)</span>
-<span id="cb27-2"><a></a>regression_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_name)</span>
-<span id="cb27-3"><a></a><span class="fu">summary</span>(regression_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a><span class="fu">help</span>(lm)</span>
+<span id="cb27-2"><a aria-label="2"></a>regression_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_name)</span>
+<span id="cb27-3"><a aria-label="3"></a><span class="fu">summary</span>(regression_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="simple-regression-2" class="slide level2">
 <h2>Simple Regression</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>penguins_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins4) <span class="co">#&lt;&lt;</span></span>
-<span id="cb28-2"><a></a><span class="fu">summary</span>(penguins_regression)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a>penguins_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins4) <span class="co">#&lt;&lt;</span></span>
+<span id="cb28-2"><a aria-label="2"></a><span class="fu">summary</span>(penguins_regression)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -813,10 +816,10 @@ F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="simple-regression-evaluate-model" class="slide level2">
 <h2>Simple Regression (evaluate model)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb30-2"><a></a><span class="fu">plot</span>(penguins_regression)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb30-2"><a aria-label="2"></a><span class="fu">plot</span>(penguins_regression)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <img data-src="2-BasicStatisticalTests_files/figure-revealjs/penguins-assumptions-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
 <section id="simple-regression-results" class="slide level2 smaller">
@@ -830,8 +833,8 @@ F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><span class="math inline">\(\epsilon_i\)</span> is the error for penguin <span class="math inline">\(i = 1, ..., n\)</span> where <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">tidy</span>(penguins_regression)  <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a></a>  <span class="fu">mutate</span>(<span class="at">p.value =</span> scales<span class="sc">::</span><span class="fu">pvalue</span>(p.value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="fu">tidy</span>(penguins_regression)  <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">p.value =</span> scales<span class="sc">::</span><span class="fu">pvalue</span>(p.value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -909,11 +912,11 @@ F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="simple-regression-results-2" class="slide level2">
 <h2>Simple Regression (results)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>penguins_preds <span class="ot">&lt;-</span> <span class="fu">cbind</span>(penguins4, <span class="fu">predict</span>(penguins_regression, <span class="at">interval =</span> <span class="st">'confidence'</span>)) <span class="co">#&lt;&lt;</span></span>
-<span id="cb33-2"><a></a><span class="fu">ggplot</span>(penguins_preds, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb33-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb33-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(penguins_regression))) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
-<span id="cb33-5"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span> <span class="fl">0.3</span>)  <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>penguins_preds <span class="ot">&lt;-</span> <span class="fu">cbind</span>(penguins4, <span class="fu">predict</span>(penguins_regression, <span class="at">interval =</span> <span class="st">'confidence'</span>)) <span class="co">#&lt;&lt;</span></span>
+<span id="cb33-2"><a aria-label="2"></a><span class="fu">ggplot</span>(penguins_preds, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb33-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(penguins_regression))) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb33-5"><a aria-label="5"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span> <span class="fl">0.3</span>)  <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="2-BasicStatisticalTests_files/figure-revealjs/penguins-regression-results-graph-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>

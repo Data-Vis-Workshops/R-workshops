@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>R Workshops – Data Wrangling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -306,8 +309,8 @@
 <h2>Motivating Example: Lahman package (Sports Database)</h2>
 <p>Sean Lahman is a database journalist, who started databases of historical sports statistics, in particular, the Lahman database on baseball.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(Lahman)</span>
-<span id="cb1-2"><a></a>LahmanData <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(Lahman)</span>
+<span id="cb1-2"><a aria-label="2"></a>LahmanData <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -374,15 +377,15 @@
 <section id="example-hall-of-fame-of-baseball" class="slide level2">
 <h2>Example: Hall of Fame of Baseball</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>HallOfFame <span class="ot">&lt;-</span> HallOfFame <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a></a>  <span class="fu">mutate</span>(<span class="at">times =</span> <span class="fu">order</span>(yearID)) </span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>HallOfFame <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> votes<span class="sc">/</span>needed, <span class="at">colour =</span> inducted)) <span class="sc">+</span> </span>
-<span id="cb2-7"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"grey20"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb2-8"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> playerID), <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb2-9"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>HallOfFame <span class="ot">&lt;-</span> HallOfFame <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">times =</span> <span class="fu">order</span>(yearID)) </span>
+<span id="cb2-4"><a aria-label="4"></a></span>
+<span id="cb2-5"><a aria-label="5"></a>HallOfFame <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a aria-label="6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> votes<span class="sc">/</span>needed, <span class="at">colour =</span> inducted)) <span class="sc">+</span> </span>
+<span id="cb2-7"><a aria-label="7"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"grey20"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a aria-label="8"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> playerID), <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a aria-label="9"></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="5-joining_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
@@ -390,11 +393,11 @@
 <h2>Hall of Fame - how many attempts?</h2>
 <p>We’d like to label all the last attempts - and not just with the <code>playerID</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>HallOfFame <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> times, <span class="at">y =</span> votes<span class="sc">/</span>needed, <span class="at">colour =</span> inducted)) <span class="sc">+</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"grey20"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> playerID), <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>HallOfFame <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> times, <span class="at">y =</span> votes<span class="sc">/</span>needed, <span class="at">colour =</span> inducted)) <span class="sc">+</span> </span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"grey20"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> playerID), <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="5-joining_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
@@ -420,11 +423,11 @@
 <div class="columns">
 <div class="column">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-2"><a></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
-<span id="cb4-3"><a></a>  <span class="at">trt =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb4-4"><a></a>  <span class="at">rep=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>)), </span>
-<span id="cb4-5"><a></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="at">trt =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="at">rep=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>)), </span>
+<span id="cb4-5"><a aria-label="5"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -473,10 +476,10 @@
 </div>
 </div><div class="column">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-2"><a></a>  <span class="at">id=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>), </span>
-<span id="cb5-3"><a></a>  <span class="at">stress=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">3</span>),</span>
-<span id="cb5-4"><a></a>  <span class="at">bpm =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">125</span>, <span class="dv">74</span>, <span class="dv">136</span>, <span class="dv">48</span>, <span class="dv">110</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="at">id=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>), </span>
+<span id="cb5-3"><a aria-label="3"></a>  <span class="at">stress=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">3</span>),</span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="at">bpm =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">125</span>, <span class="dv">74</span>, <span class="dv">136</span>, <span class="dv">48</span>, <span class="dv">110</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -533,7 +536,7 @@
 <li><p><code>right_join</code> works symmetric</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">left_join</span>(df1, df2, <span class="at">by=</span><span class="st">"id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">left_join</span>(df1, df2, <span class="at">by=</span><span class="st">"id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -615,7 +618,7 @@
 <li>only matches from both data sets are kept</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">inner_join</span>(df1, df2, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">inner_join</span>(df1, df2, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -669,7 +672,7 @@
 <li>all ids are kept, missings are filled in with <code>NA</code></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">full_join</span>(df1, df2, <span class="at">by =</span> <span class="st">"id"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">full_join</span>(df1, df2, <span class="at">by =</span> <span class="st">"id"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -777,7 +780,7 @@
 <li>careful, not symmetric!</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">anti_join</span>(df1, df2, <span class="at">by=</span><span class="st">"id"</span>) <span class="co"># no values for id in df2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">anti_join</span>(df1, df2, <span class="at">by=</span><span class="st">"id"</span>) <span class="co"># no values for id in df2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id trt value
 1  1   A     5
@@ -785,7 +788,7 @@
 3  3   C     7
 4  6   C     3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">anti_join</span>(df2, df1, <span class="at">by=</span><span class="st">"id"</span>) <span class="co"># no values for id in df1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">anti_join</span>(df2, df1, <span class="at">by=</span><span class="st">"id"</span>) <span class="co"># no values for id in df1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id stress bpm
 1  7      0  48
@@ -797,16 +800,16 @@
 <h2>Joining baseball data from the Lahman Package</h2>
 <p>Does lifetime batting average make a difference in a player being inducted?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>Batting2 <span class="ot">&lt;-</span> Batting <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">BatAvg =</span> H<span class="sc">/</span>AB) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a></a>  <span class="fu">summarise</span>(<span class="at">LifeBA =</span> <span class="fu">mean</span>(BatAvg, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a>hof_bats <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(HallOfFame <span class="sc">%&gt;%</span> <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Player"</span>),</span>
-<span id="cb13-6"><a></a>                       Batting2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"playerID"</span>))</span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a>hof_bats <span class="sc">%&gt;%</span> </span>
-<span id="cb13-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> LifeBA, <span class="at">group =</span> playerID)) <span class="sc">+</span> </span>
-<span id="cb13-10"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> inducted))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>Batting2 <span class="ot">&lt;-</span> Batting <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">BatAvg =</span> H<span class="sc">/</span>AB) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a aria-label="3"></a>  <span class="fu">summarise</span>(<span class="at">LifeBA =</span> <span class="fu">mean</span>(BatAvg, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb13-4"><a aria-label="4"></a></span>
+<span id="cb13-5"><a aria-label="5"></a>hof_bats <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(HallOfFame <span class="sc">%&gt;%</span> <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Player"</span>),</span>
+<span id="cb13-6"><a aria-label="6"></a>                       Batting2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"playerID"</span>))</span>
+<span id="cb13-7"><a aria-label="7"></a></span>
+<span id="cb13-8"><a aria-label="8"></a>hof_bats <span class="sc">%&gt;%</span> </span>
+<span id="cb13-9"><a aria-label="9"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> LifeBA, <span class="at">group =</span> playerID)) <span class="sc">+</span> </span>
+<span id="cb13-10"><a aria-label="10"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> inducted))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="5-joining_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
@@ -814,15 +817,15 @@
 <h2>Joining Baseball Data (2/2)</h2>
 <p>What about pitchers? Are pitchers with lower lifetime ERAs more likely to be inducted?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>Pitching2 <span class="ot">&lt;-</span> Pitching <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">summarise</span>(<span class="at">LifeERA =</span> <span class="fu">mean</span>(ERA, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>hof_pitch <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(HallOfFame <span class="sc">%&gt;%</span> <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Player"</span>), </span>
-<span id="cb14-5"><a></a>                        Pitching2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"playerID"</span>))</span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a>hof_pitch <span class="sc">%&gt;%</span> </span>
-<span id="cb14-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> LifeERA, <span class="at">group =</span> playerID)) <span class="sc">+</span> </span>
-<span id="cb14-9"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> inducted))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>Pitching2 <span class="ot">&lt;-</span> Pitching <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">LifeERA =</span> <span class="fu">mean</span>(ERA, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb14-3"><a aria-label="3"></a></span>
+<span id="cb14-4"><a aria-label="4"></a>hof_pitch <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(HallOfFame <span class="sc">%&gt;%</span> <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Player"</span>), </span>
+<span id="cb14-5"><a aria-label="5"></a>                        Pitching2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"playerID"</span>))</span>
+<span id="cb14-6"><a aria-label="6"></a></span>
+<span id="cb14-7"><a aria-label="7"></a>hof_pitch <span class="sc">%&gt;%</span> </span>
+<span id="cb14-8"><a aria-label="8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yearID, <span class="at">y =</span> LifeERA, <span class="at">group =</span> playerID)) <span class="sc">+</span> </span>
+<span id="cb14-9"><a aria-label="9"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> inducted))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="5-joining_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
@@ -837,18 +840,18 @@
 <section id="solution" class="slide level2">
 <h2>Solution</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>Voted <span class="ot">&lt;-</span> HallOfFame <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ballots)) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-4"><a></a>  <span class="fu">arrange</span>(yearID) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-5"><a></a>  <span class="fu">mutate</span>( <span class="at">attempt =</span> <span class="fu">order</span>(yearID))</span>
-<span id="cb15-6"><a></a></span>
-<span id="cb15-7"><a></a>Voted <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Voted, People <span class="sc">%&gt;%</span> </span>
-<span id="cb15-8"><a></a>                dplyr<span class="sc">::</span><span class="fu">select</span>(playerID, nameFirst, nameLast), </span>
-<span id="cb15-9"><a></a>                   <span class="at">by =</span> <span class="st">"playerID"</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(attempt <span class="sc">&gt;</span> <span class="dv">15</span>)</span>
-<span id="cb15-10"><a></a>Names <span class="ot">&lt;-</span> Voted <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">FullName =</span> <span class="fu">paste</span>(nameFirst, nameLast))</span>
-<span id="cb15-11"><a></a>Names<span class="sc">$</span>FullName <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb15-12"><a></a>  <span class="fu">head</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>Voted <span class="ot">&lt;-</span> HallOfFame <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ballots)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a aria-label="3"></a>  <span class="fu">group_by</span>(playerID) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a aria-label="4"></a>  <span class="fu">arrange</span>(yearID) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-5"><a aria-label="5"></a>  <span class="fu">mutate</span>( <span class="at">attempt =</span> <span class="fu">order</span>(yearID))</span>
+<span id="cb15-6"><a aria-label="6"></a></span>
+<span id="cb15-7"><a aria-label="7"></a>Voted <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Voted, People <span class="sc">%&gt;%</span> </span>
+<span id="cb15-8"><a aria-label="8"></a>                dplyr<span class="sc">::</span><span class="fu">select</span>(playerID, nameFirst, nameLast), </span>
+<span id="cb15-9"><a aria-label="9"></a>                   <span class="at">by =</span> <span class="st">"playerID"</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(attempt <span class="sc">&gt;</span> <span class="dv">15</span>)</span>
+<span id="cb15-10"><a aria-label="10"></a>Names <span class="ot">&lt;-</span> Voted <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">FullName =</span> <span class="fu">paste</span>(nameFirst, nameLast))</span>
+<span id="cb15-11"><a aria-label="11"></a>Names<span class="sc">$</span>FullName <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-12"><a aria-label="12"></a>  <span class="fu">head</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>

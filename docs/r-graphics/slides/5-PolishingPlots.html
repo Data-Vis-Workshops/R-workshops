@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>R Workshops – Data Visualization</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -230,9 +233,9 @@
 <h2>Setting Themes</h2>
 <p>You can globally set a theme with the <code>theme_set()</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co">#&lt;&lt;</span></span>
-<span id="cb1-2"><a></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
-<span id="cb1-3"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co">#&lt;&lt;</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
@@ -258,40 +261,40 @@
 <section id="modifying-a-plot" class="slide level2 smaller">
 <h2>Modifying a plot</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span> </span>
-<span id="cb2-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">colour =</span> manufacturer, <span class="at">fill =</span> manufacturer) ) </span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb2-6"><a></a>  <span class="do">## modify plot background</span></span>
-<span id="cb2-7"><a></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightskyblue1"</span>,<span class="at">colour =</span> <span class="st">"pink"</span>,<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span> </span>
+<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">colour =</span> manufacturer, <span class="at">fill =</span> manufacturer) ) </span>
+<span id="cb2-3"><a aria-label="3"></a></span>
+<span id="cb2-4"><a aria-label="4"></a>p2 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb2-5"><a aria-label="5"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb2-6"><a aria-label="6"></a>  <span class="do">## modify plot background</span></span>
+<span id="cb2-7"><a aria-label="7"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightskyblue1"</span>,<span class="at">colour =</span> <span class="st">"pink"</span>,<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"></section>
 <section id="plot-legends" class="slide level2 smaller">
 <h2>Plot Legends</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> </span>
-<span id="cb3-2"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb3-3"><a></a>  <span class="do">### move and modify legend </span></span>
-<span id="cb3-4"><a></a>  <span class="at">legend.title =</span> <span class="fu">element_blank</span>(), <span class="co">#&lt;&lt;</span></span>
-<span id="cb3-5"><a></a>  <span class="at">legend.position =</span> <span class="st">"top"</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb3-6"><a></a>  <span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightskyblue1"</span>, <span class="at">color =</span> <span class="st">"lightskyblue1"</span>), <span class="co">#&lt;&lt;</span></span>
-<span id="cb3-7"><a></a>  <span class="at">legend.background =</span> <span class="fu">element_rect</span>( <span class="at">fill =</span> <span class="st">"lightskyblue1"</span>,<span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="fl">0.5</span>,<span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="co">#&lt;&lt;</span></span>
-<span id="cb3-8"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> </span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="do">### move and modify legend </span></span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="at">legend.title =</span> <span class="fu">element_blank</span>(), <span class="co">#&lt;&lt;</span></span>
+<span id="cb3-5"><a aria-label="5"></a>  <span class="at">legend.position =</span> <span class="st">"top"</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb3-6"><a aria-label="6"></a>  <span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightskyblue1"</span>, <span class="at">color =</span> <span class="st">"lightskyblue1"</span>), <span class="co">#&lt;&lt;</span></span>
+<span id="cb3-7"><a aria-label="7"></a>  <span class="at">legend.background =</span> <span class="fu">element_rect</span>( <span class="at">fill =</span> <span class="st">"lightskyblue1"</span>,<span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="fl">0.5</span>,<span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="co">#&lt;&lt;</span></span>
+<span id="cb3-8"><a aria-label="8"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-8-1.png" width="1152" class="r-stretch"></section>
 <section id="modifying-axes" class="slide level2">
 <h2>Modifying Axes</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p4 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb4-2"><a></a>  <span class="do">### remove axis ticks</span></span>
-<span id="cb4-3"><a></a>  <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(), <span class="co">#&lt;&lt;</span></span>
-<span id="cb4-4"><a></a>  <span class="do">### modify axis lines</span></span>
-<span id="cb4-5"><a></a>  <span class="at">axis.line.y =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>),<span class="co">#&lt;&lt;</span></span>
-<span id="cb4-6"><a></a>  <span class="at">axis.line.x =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="co">#&lt;&lt;</span></span>
-<span id="cb4-7"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>p4 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="do">### remove axis ticks</span></span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="at">axis.ticks=</span><span class="fu">element_blank</span>(), <span class="co">#&lt;&lt;</span></span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="do">### modify axis lines</span></span>
+<span id="cb4-5"><a aria-label="5"></a>  <span class="at">axis.line.y =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>),<span class="co">#&lt;&lt;</span></span>
+<span id="cb4-6"><a aria-label="6"></a>  <span class="at">axis.line.x =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"pink"</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="co">#&lt;&lt;</span></span>
+<span id="cb4-7"><a aria-label="7"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-10-1.png" width="1152" class="r-stretch"></section>
@@ -299,27 +302,27 @@
 <h2>Plot Labels</h2>
 <p>Can be modified in several ways: - <code>labs()</code>, <code>xlab()</code>, <code>ylab()</code>, <code>ggtitle()</code> - You can also set axis and legend labels in the individual scales (using the first argument, the name) e.g.&nbsp;<code>scale_x_continuous()</code> .</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>p5 <span class="ot">&lt;-</span> p4 <span class="sc">+</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Class of car"</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb5-3"><a></a>       <span class="at">y =</span> <span class="st">""</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb5-4"><a></a>       <span class="at">title =</span> <span class="st">"Cars by class and manufacturer"</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb5-5"><a></a>       <span class="at">subtitle =</span> <span class="st">"With a custom theme!!"</span>) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>p5 <span class="ot">&lt;-</span> p4 <span class="sc">+</span> </span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Class of car"</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb5-3"><a aria-label="3"></a>       <span class="at">y =</span> <span class="st">""</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb5-4"><a aria-label="4"></a>       <span class="at">title =</span> <span class="st">"Cars by class and manufacturer"</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb5-5"><a aria-label="5"></a>       <span class="at">subtitle =</span> <span class="st">"With a custom theme!!"</span>) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section id="zooming" class="slide level2">
 <h2>Zooming</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>() </span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a>p_zoom_in <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
-<span id="cb6-5"><a></a>  <span class="fu">xlim</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
-<span id="cb6-6"><a></a>  <span class="fu">ylim</span>(<span class="dv">10</span>, <span class="dv">25</span>) <span class="co">#&lt;&lt;</span></span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a>p_zoom_out <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
-<span id="cb6-9"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
-<span id="cb6-10"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>() </span>
+<span id="cb6-3"><a aria-label="3"></a></span>
+<span id="cb6-4"><a aria-label="4"></a>p_zoom_in <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb6-5"><a aria-label="5"></a>  <span class="fu">xlim</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb6-6"><a aria-label="6"></a>  <span class="fu">ylim</span>(<span class="dv">10</span>, <span class="dv">25</span>) <span class="co">#&lt;&lt;</span></span>
+<span id="cb6-7"><a aria-label="7"></a></span>
+<span id="cb6-8"><a aria-label="8"></a>p_zoom_out <span class="ot">&lt;-</span> p <span class="sc">+</span> </span>
+<span id="cb6-9"><a aria-label="9"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb6-10"><a aria-label="10"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>)) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="5-PolishingPlots_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section></section>
@@ -331,12 +334,12 @@
 <section id="plotly" class="slide level2">
 <h2>Plotly</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">scale_color_locuszoom</span>()</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="fu">library</span>(plotly) <span class="co">#&lt;&lt;</span></span>
-<span id="cb7-6"><a></a><span class="fu">ggplotly</span>(p) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">scale_color_locuszoom</span>()</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a><span class="fu">library</span>(plotly) <span class="co">#&lt;&lt;</span></span>
+<span id="cb7-6"><a aria-label="6"></a><span class="fu">ggplotly</span>(p) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-f3385ee14aa704f9cb2a" style="width:768px;height:480px;"></div>
 <script type="application/json" data-for="htmlwidget-f3385ee14aa704f9cb2a">{"x":{"data":[{"x":[3.2149999999999999,3.4399999999999999,3.46,3.5699999999999998,4.0700000000000003,3.73,3.7799999999999998,5.25,5.4240000000000004,5.3449999999999998,2.4649999999999999,3.52,3.4350000000000001,3.8399999999999999,3.8450000000000002],"y":[21.399999999999999,18.699999999999999,18.100000000000001,14.300000000000001,16.399999999999999,17.300000000000001,15.199999999999999,10.4,10.4,14.699999999999999,21.5,15.5,15.199999999999999,13.300000000000001,19.199999999999999],"text":["wt: 3.215<br />mpg: 21.4<br />gear: 3","wt: 3.440<br />mpg: 18.7<br />gear: 3","wt: 3.460<br />mpg: 18.1<br />gear: 3","wt: 3.570<br />mpg: 14.3<br />gear: 3","wt: 4.070<br />mpg: 16.4<br />gear: 3","wt: 3.730<br />mpg: 17.3<br />gear: 3","wt: 3.780<br />mpg: 15.2<br />gear: 3","wt: 5.250<br />mpg: 10.4<br />gear: 3","wt: 5.424<br />mpg: 10.4<br />gear: 3","wt: 5.345<br />mpg: 14.7<br />gear: 3","wt: 2.465<br />mpg: 21.5<br />gear: 3","wt: 3.520<br />mpg: 15.5<br />gear: 3","wt: 3.435<br />mpg: 15.2<br />gear: 3","wt: 3.840<br />mpg: 13.3<br />gear: 3","wt: 3.845<br />mpg: 19.2<br />gear: 3"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(212,63,58,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(212,63,58,1)"}},"hoveron":"points","name":"3","legendgroup":"3","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.6200000000000001,2.875,2.3199999999999998,3.1899999999999999,3.1499999999999999,3.4399999999999999,3.4399999999999999,2.2000000000000002,1.615,1.835,1.9350000000000001,2.7799999999999998],"y":[21,21,22.800000000000001,24.399999999999999,22.800000000000001,19.199999999999999,17.800000000000001,32.399999999999999,30.399999999999999,33.899999999999999,27.300000000000001,21.399999999999999],"text":["wt: 2.620<br />mpg: 21.0<br />gear: 4","wt: 2.875<br />mpg: 21.0<br />gear: 4","wt: 2.320<br />mpg: 22.8<br />gear: 4","wt: 3.190<br />mpg: 24.4<br />gear: 4","wt: 3.150<br />mpg: 22.8<br />gear: 4","wt: 3.440<br />mpg: 19.2<br />gear: 4","wt: 3.440<br />mpg: 17.8<br />gear: 4","wt: 2.200<br />mpg: 32.4<br />gear: 4","wt: 1.615<br />mpg: 30.4<br />gear: 4","wt: 1.835<br />mpg: 33.9<br />gear: 4","wt: 1.935<br />mpg: 27.3<br />gear: 4","wt: 2.780<br />mpg: 21.4<br />gear: 4"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(238,162,54,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(238,162,54,1)"}},"hoveron":"points","name":"4","legendgroup":"4","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.1400000000000001,1.5129999999999999,3.1699999999999999,2.77,3.5699999999999998],"y":[26,30.399999999999999,15.800000000000001,19.699999999999999,15],"text":["wt: 2.140<br />mpg: 26.0<br />gear: 5","wt: 1.513<br />mpg: 30.4<br />gear: 5","wt: 3.170<br />mpg: 15.8<br />gear: 5","wt: 2.770<br />mpg: 19.7<br />gear: 5","wt: 3.570<br />mpg: 15.0<br />gear: 5"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(92,184,92,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(92,184,92,1)"}},"hoveron":"points","name":"5","legendgroup":"5","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":37.260273972602747,"l":37.260273972602747},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3174499999999998,5.6195500000000003],"tickmode":"array","ticktext":["2","3","4","5"],"tickvals":[2,3,4,5],"categoryorder":"array","categoryarray":["2","3","4","5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"wt","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[9.2249999999999996,35.074999999999996],"tickmode":"array","ticktext":["10","15","20","25","30","35"],"tickvals":[10,15,20,25,30,35],"categoryorder":"array","categoryarray":["10","15","20","25","30","35"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716894984},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"mpg","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"rgba(255,255,255,1)","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"gear","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"505691260c233":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"505691260c233","visdat":{"505691260c233":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
@@ -352,10 +355,10 @@
 <h2>Saving your Work</h2>
 <p>We can save the results of a plot to a file (as an image) using the <code>ggsave()</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb8-3"><a></a></span>
-<span id="cb8-4"><a></a><span class="fu">ggsave</span>(<span class="st">"mpg_by_wt.pdf"</span>, <span class="at">plot =</span> p1) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">colour =</span> gear)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb8-3"><a aria-label="3"></a></span>
+<span id="cb8-4"><a aria-label="4"></a><span class="fu">ggsave</span>(<span class="st">"mpg_by_wt.pdf"</span>, <span class="at">plot =</span> p1) <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="your-turn" class="slide level2 inverse">
@@ -371,9 +374,9 @@
 <li>Embed the png into MS word or another editor.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
-<span id="cb9-2"><a></a><span class="fu">data</span>(penguins, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span>
-<span id="cb9-3"><a></a><span class="fu">head</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="fu">data</span>(penguins, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span>
+<span id="cb9-3"><a aria-label="3"></a><span class="fu">head</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

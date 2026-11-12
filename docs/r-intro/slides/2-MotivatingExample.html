@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <title>R Workshops – Motivating Example</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -220,8 +223,8 @@
 <h2>Getting Started</h2>
 <p>Let’s begin by installing and loading <code>tidyverse</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This workshop will focus largely on a group of packages that live together under the name <code>tidyverse</code>.</p>
 <p><code>tidyverse</code> includes the following well known packages:</p>
@@ -250,11 +253,11 @@
 <h2>First look at data in R</h2>
 <p>Let’s use R to look at the top few rows of the <em>Salmonella</em> shedding data set. First, we load the data set using <code>read_csv</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>shed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>shed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, we use the <code>head</code> function to look at the first 6 rows of the data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">head</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">head</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 12
   pignum time_point pig_weight  temp pan_wt wet_wt Dry_wt_pan Dry_weight
@@ -274,7 +277,7 @@
 <h2><em>Salmonella</em> Shedding Data: Attributes</h2>
 <p>How big is this data set, and what types of variables are in each column?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">str</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">str</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [295 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ pignum           : num [1:295] 77 87 122 160 191 224 337 345 419 458 ...
@@ -312,7 +315,7 @@
 <h2><em>Salmonella</em> Shedding: Variables</h2>
 <p>Let’s get a summary of the values for each variable:</p>
 <div class="cell" height="3000">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">summary</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">summary</span>(shed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pignum        time_point     pig_weight         temp           pan_wt     
  Min.   :  6.0   Min.   : 0.0   Min.   : 9.48   Min.   :101.2   Min.   :1.000  
@@ -345,7 +348,7 @@
 <h2>Scatterplots</h2>
 <p>Let’s look at the relationship between time point and <em>Salmonella</em> shedding.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" class="r-stretch"></section>
@@ -353,7 +356,7 @@
 <h2>More Scatterplots</h2>
 <p>Color the points by treatment groups</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">colour =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">colour =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-8-1.png" width="864" class="r-stretch"></section>
@@ -361,7 +364,7 @@
 <h2>More Scatterplots</h2>
 <p>Switch to lines for easier reading</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">colour =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>pignum))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">colour =</span> treatment)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>pignum))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-9-1.png" width="864" class="r-stretch"></section>
@@ -369,9 +372,9 @@
 <h2>Even More Plots</h2>
 <p>Add faceting</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">color=</span>treatment)) <span class="sc">+</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>pignum)) <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>treatment)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="fu">ggplot</span>(shed, <span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y=</span>total_shedding, <span class="at">color=</span>treatment)) <span class="sc">+</span> </span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>pignum)) <span class="sc">+</span> </span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>treatment)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-10-1.png" width="864" class="r-stretch"></section>
@@ -380,11 +383,11 @@
 <p>We will make a new variable in the data: <code>gain = weight at day 21 - weight at day 0</code>.</p>
 <p>We will then filter the data to only include the final values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>final_shed <span class="ot">&lt;-</span> shed <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">group_by</span>(pignum) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a></a>  <span class="fu">mutate</span>(<span class="at">gain =</span> pig_weight[time_point <span class="sc">==</span> <span class="dv">21</span>] <span class="sc">-</span> pig_weight[time_point <span class="sc">==</span> <span class="dv">0</span>]) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time_point <span class="sc">==</span> <span class="dv">21</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>))</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a><span class="fu">summary</span>(final_shed<span class="sc">$</span>gain)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>final_shed <span class="ot">&lt;-</span> shed <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(pignum) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">gain =</span> pig_weight[time_point <span class="sc">==</span> <span class="dv">21</span>] <span class="sc">-</span> pig_weight[time_point <span class="sc">==</span> <span class="dv">0</span>]) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time_point <span class="sc">==</span> <span class="dv">21</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>))</span>
+<span id="cb13-4"><a aria-label="4"></a></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="fu">summary</span>(final_shed<span class="sc">$</span>gain)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    8.22   12.40   14.14   14.16   16.04   18.86 </code></pre>
@@ -395,7 +398,7 @@
 <h2>Histogram</h2>
 <p>Let’s look distribution of the final shedding values with a histogram</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(final_shed) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> total_shedding))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">ggplot</span>(final_shed) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> total_shedding))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-12-1.png" width="768" class="r-stretch"></section>
@@ -403,7 +406,7 @@
 <h2>One pig did not shed at all…</h2>
 <p>Which pig, and what treatment did it receive?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>final_shed[<span class="fu">which.min</span>(final_shed<span class="sc">$</span>total_shedding),]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>final_shed[<span class="fu">which.min</span>(final_shed<span class="sc">$</span>total_shedding),]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 7
   pignum time_point pig_weight daily_shedding treatment total_shedding  gain
@@ -416,16 +419,16 @@
 <h2>Shedding by Treatment</h2>
 <p>Look at the average cumulative shedding value for each treatment separately</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Using base `R`:</span></span>
-<span id="cb18-2"><a></a><span class="fu">median</span>(final_shed<span class="sc">$</span>total_shedding[final_shed<span class="sc">$</span>treatment <span class="sc">==</span> <span class="st">"control"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="co"># Using base `R`:</span></span>
+<span id="cb18-2"><a aria-label="2"></a><span class="fu">median</span>(final_shed<span class="sc">$</span>total_shedding[final_shed<span class="sc">$</span>treatment <span class="sc">==</span> <span class="st">"control"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 44.42518</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># then repeat for each treatment. Or ...</span></span>
-<span id="cb20-2"><a></a></span>
-<span id="cb20-3"><a></a><span class="co"># Using `tidyverse`:</span></span>
-<span id="cb20-4"><a></a>final_shed <span class="sc">%&gt;%</span>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-5"><a></a>  <span class="fu">summarise</span>(<span class="at">med_shed =</span> <span class="fu">median</span>(total_shedding))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="co"># then repeat for each treatment. Or ...</span></span>
+<span id="cb20-2"><a aria-label="2"></a></span>
+<span id="cb20-3"><a aria-label="3"></a><span class="co"># Using `tidyverse`:</span></span>
+<span id="cb20-4"><a aria-label="4"></a>final_shed <span class="sc">%&gt;%</span>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">med_shed =</span> <span class="fu">median</span>(total_shedding))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   treatment med_shed
@@ -443,8 +446,8 @@
 <h2>Statistical Significance</h2>
 <p>There is a difference, but is it statistically significant?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">wilcox.test</span>(total_shedding <span class="sc">~</span> treatment, <span class="at">data =</span> final_shed,</span>
-<span id="cb22-2"><a></a>            <span class="at">subset =</span> treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"RPS"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">wilcox.test</span>(total_shedding <span class="sc">~</span> treatment, <span class="at">data =</span> final_shed,</span>
+<span id="cb22-2"><a aria-label="2"></a>            <span class="at">subset =</span> treatment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"RPS"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum exact test
@@ -459,8 +462,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2>Boxplots</h2>
 <p>We could compare the cumulative shedding values of each treatment group with a side by side boxplot</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(final_shed) <span class="sc">+</span> </span>
-<span id="cb24-2"><a></a>  <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(treatment, total_shedding, <span class="at">fill =</span> treatment))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">ggplot</span>(final_shed) <span class="sc">+</span> </span>
+<span id="cb24-2"><a aria-label="2"></a>  <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(treatment, total_shedding, <span class="at">fill =</span> treatment))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-16-1.png" width="864" class="r-stretch"></section>
@@ -468,9 +471,9 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2>Boxplots Again</h2>
 <p>Alternatively, we could use the original data to compare the daily shedding values of each treatment group with side by side boxplots over time</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>shed <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time_point <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb25-2"><a></a>  <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(treatment, daily_shedding, <span class="at">fill =</span> treatment), <span class="at">position =</span> <span class="st">"dodge"</span>)  <span class="sc">+</span> </span>
-<span id="cb25-3"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>time_point)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>shed <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time_point <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb25-2"><a aria-label="2"></a>  <span class="fu">geom_boxplot</span>( <span class="fu">aes</span>(treatment, daily_shedding, <span class="at">fill =</span> treatment), <span class="at">position =</span> <span class="st">"dodge"</span>)  <span class="sc">+</span> </span>
+<span id="cb25-3"><a aria-label="3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>time_point)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="2-MotivatingExample_files/figure-revealjs/unnamed-chunk-17-1.png" width="864" class="r-stretch"></section>
@@ -488,7 +491,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">UNL R Workshops</a></p>
+<p><a href="../../index.html">R Workshops</a></p>
 </div>
 </div></div>
 

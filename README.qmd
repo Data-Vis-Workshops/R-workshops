@@ -62,11 +62,7 @@ Note that half-day workshops are those which are only offered from e.g. 9-12 or 
 
 ::: {.content-visible when-format="docx"}
 
-<<<<<<< HEAD
 See the [course website](https://data-vis-workshops.github.io/R-workshops/) for information about student scholarships, corporate group rates, and payment rules.
-=======
-See the [course website](https://unl-statistics.github.io/R-workshops/) for information about student scholarships, corporate group rates, and payment rules.
->>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 
 :::
 
