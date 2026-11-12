@@ -466,7 +466,7 @@ B
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4-tidyr_files/figure-html/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="288"></p>
+<p><img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="288"></p>
 </figure>
 </div>
 </div>
@@ -839,7 +839,7 @@ B
 <span id="cb2-9"><a aria-label="9"></a><span class="fu">xlab</span>(<span class="st">"variable"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"rating"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
 <section id="lets-start-with-messy-1" class="slide level2">
 <h2>Let’s start with <strong>Messy (1)</strong></h2>
 
@@ -931,7 +931,7 @@ B
 <span id="cb4-2"><a aria-label="2"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> rating, <span class="at">fill =</span> variable))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
 <section id="long-to-wide" class="slide level2">
 <h2>Long to Wide</h2>
 <p>In certain applications, we may wish to take a long dataset and convert it to a wide dataset (Perhaps displaying in a table).</p>
@@ -1119,7 +1119,7 @@ B
 <span id="cb7-5"><a aria-label="5"></a>  <span class="fu">geom_abline</span>(<span class="at">colour =</span> <span class="st">"grey50"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-13-1.png" width="672" class="r-stretch"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="motivating-example-separate-function" class="slide level2">
 <h2>Motivating Example (separate function)</h2>
 <div class="columns">
@@ -1272,7 +1272,7 @@ B
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>occupation_long <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Male, <span class="at">y =</span> Female)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Occupation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="dates-and-times" class="slide level2">
 <h2>Dates and Times</h2>
 <p>Dates are deceptively hard to work with in R.</p>
@@ -1294,9 +1294,9 @@ B
 <span id="cb20-5"><a aria-label="5"></a><span class="fu">now</span>() <span class="sc">+</span> <span class="fu">hours</span>(<span class="dv">4</span>)</span>
 <span id="cb20-6"><a aria-label="6"></a><span class="fu">today</span>() <span class="sc">-</span> <span class="fu">days</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-11-12 10:08:49 MST"
+<pre><code>[1] "2026-11-12 10:23:38 MST"
 [1] "2026-11-12"
-[1] "2026-11-12 14:08:49 MST"
+[1] "2026-11-12 14:23:38 MST"
 [1] "2026-11-10"</code></pre>
 </div>
 </div>
@@ -1341,7 +1341,7 @@ B
 <span id="cb25-7"><a aria-label="7"></a><span class="fu">ggplot</span>(delay.dat) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(date, dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
 <section id="your-turn-3" class="slide level2 inverse">
 <h2>Your Turn</h2>
 <ul>
@@ -1358,7 +1358,7 @@ B
 
 
 
-<img data-src="4-tidyr_files/figure-html/unnamed-chunk-25-1.png" width="624" class="r-stretch"></section>
+<img data-src="4-tidyr_files/figure-revealjs/unnamed-chunk-25-1.png" width="624" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1574,6 +1574,44 @@ B
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

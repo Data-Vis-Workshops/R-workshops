@@ -126,6 +126,7 @@ i2 <- ggplot(data = iris2) +
   labs(x="", y="", title="Parallel Coordinates")
 
 # mosaic plot
+# pak::pak("haleyjeppson/ggmosaic")
 library(ggmosaic)
 i3 <- ggplot(diamonds) + 
   ggmosaic::geom_mosaic(aes(x=ggmosaic::product(color), fill = cut)) +
@@ -134,7 +135,7 @@ i3 <- ggplot(diamonds) +
   labs(x="", y="", title="Mosaic Plot")
 
 # radar chart
-devtools::install_github("ricardo-bion/ggradar")
+# pak::pak("ricardo-bion/ggradar")
 library(ggradar)
 mtcars %>%
     tibble::rownames_to_column(var = "group") %>% 
