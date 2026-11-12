@@ -7,7 +7,7 @@ execute:
   freeze: auto
   
 website:
-  title: "UNL R Workshops"
+  title: "R Workshops"
   navbar:
     left:
       - href: index.qmd
