@@ -32,4 +32,4 @@ Recommended Reading:
 
 Please make sure to try the practice problem before viewing solutions
 
--   [Your Turn Solutions](slides/99-YourTurnSolutions.qmd)
+-   [Your Turn Solutions](code/99-YourTurnSolutions.qmd)
