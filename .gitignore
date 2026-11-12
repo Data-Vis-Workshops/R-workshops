@@ -6,5 +6,8 @@
 */slides/*_cache
 _freeze
 2022-Recordings
+<<<<<<< HEAD
 
 **/*.quarto_ipynb
+=======
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4

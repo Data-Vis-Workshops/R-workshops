@@ -54,7 +54,7 @@ fit.contrast(mod.fit, "Trt.new", c(6, -1, -1, -1, -1, -1, -1))
 
 
 ## ----echo = T, eval = F-------------------------------------------------------
-# azalea2 <- read.csv("https://raw.githubusercontent.com/unl-statistics/R-workshops/main/r-modeling/data/AzaleaTwoWay.csv")
+# azalea2 <- read.csv("https://raw.githubusercontent.com/data-vis-workshops/R-workshops/main/r-modeling/data/AzaleaTwoWay.csv")
 
 
 ## ----echo = F, eval = T-------------------------------------------------------
@@ -96,7 +96,7 @@ summary(mod.fit5)
 
 
 ## ----echo = T, eval = F-------------------------------------------------------
-# azalea3 <- read.csv("https://raw.githubusercontent.com/unl-statistics/R-workshops/main/r-modeling/data/AzaleaBlock.csv")
+# azalea3 <- read.csv("https://raw.githubusercontent.com/data-vis-workshops/R-workshops/main/r-modeling/data/AzaleaBlock.csv")
 
 
 ## ----echo = F, eval = T-------------------------------------------------------

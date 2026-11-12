@@ -102,7 +102,11 @@ ggplot(data = mpg, aes(x = class, y = hwy)) +
 	# Explore the differences in length, rating, etc. in movie genres over time.
 	# **Hint:** use faceting!
 	  
+<<<<<<< HEAD
 	movies <- read.csv("https://data-vis-workshops.github.io/R-workshops/02-r-graphics/data/MovieSummary.csv")
+=======
+	movies <- read.csv("https://unl-statistics.github.io/R-workshops/02-r-graphics/data/MovieSummary.csv")
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 	summary(movies)
 	
 	ggplot(movies, aes(x = year, y = budget, group = genre, color = genre)) + 

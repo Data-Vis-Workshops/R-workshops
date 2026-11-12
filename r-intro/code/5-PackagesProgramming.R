@@ -68,7 +68,11 @@ for(i in 1:5) {# Head of for-loop
 final_shed <- read.csv("../data/daily_shedding.csv")
 
 ## ----echo = T, eval = F-------------------------------------------------------
+# <<<<<<< HEAD
 # final_shed <- read.csv("https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv")
+# =======
+# final_shed <- read.csv("https://unl-statistics.github.io/R-workshops/r-intro/data/daily_shedding.csv")
+# >>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 # 
 
 

@@ -1,7 +1,6 @@
 ## ----echo=FALSE, message=FALSE, warning=FALSE---------------------------------
 library(tidyverse)
 shed <- read_csv("https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv")
-
 final_shed <- shed %>% 
   group_by(pignum) %>% 
   mutate(gain = pig_weight[time_point == 21] - pig_weight[time_point == 0]) %>% filter(time_point == 21) %>% ungroup() %>% select(-c(4:9))

@@ -347,7 +347,7 @@
 <span id="cb3-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span><span class="fu">as.factor</span>(playerid))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-3-1.png" width="672" class="r-stretch"></section>
 <section id="arrange" class="slide level2">
 <h2>Arrange</h2>
 <p>Easy way to arrange your data in ascending or descending order</p>
@@ -714,7 +714,7 @@
 <span id="cb11-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_spin)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="co">#&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-14-1.png" width="672" class="r-stretch"></section>
 <section id="mutate" class="slide level2">
 <h2><code>mutate</code></h2>
 <ul>
@@ -927,7 +927,7 @@
 <span id="cb24-6"><a></a>                 <span class="at">colour =</span> playerid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-23-1.png" width="672" class="r-stretch"></section>
 <section id="solution-cont.-1" class="slide level2">
 <h2>Solution (cont.)</h2>
 <p>Filter down to get the best pitchers with a minimum of 50 curveballs thrown (our median)</p>
@@ -938,7 +938,7 @@
 <span id="cb25-4"><a></a>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> percentSSCU, <span class="at">y =</span> totalSSCU, <span class="at">colour =</span> playerid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-24-1.png" width="672" class="r-stretch"></section>
 <section id="your-turn-2" class="slide level2 inverse">
 <h2>Your Turn</h2>
 <p>The dataset <code>ChickWeight</code> is part of the core packages that come with R</p>
@@ -967,7 +967,7 @@
 <span id="cb26-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Diet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-25-1.png" width="672" class="r-stretch"></section>
 <section id="solution---q2" class="slide level2">
 <h2>Solution - Q2</h2>
 <div class="cell">
@@ -977,7 +977,7 @@
 <span id="cb27-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>weight, <span class="at">color=</span>Diet), <span class="at">size=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-26-1.png" width="672" class="r-stretch"></section>
 <section id="solution---q3" class="slide level2">
 <h2>Solution - Q3</h2>
 <p>First, we need a separate dataset for the summary statistics:</p>
@@ -1003,7 +1003,7 @@
 <span id="cb29-9"><a></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>ChickW1, <span class="fu">aes</span>(<span class="at">y=</span>mean_weight, <span class="at">color=</span>Diet), <span class="at">size=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-28-1.png" width="672" class="r-stretch"></section>
 <section id="mutate-is-incredibly-flexible" class="slide level2">
 <h2><code>Mutate</code> is incredibly flexible</h2>
 <p>Consider a new variable <code>gain</code>, which gives the increase in weight of a chick since birth</p>
@@ -1037,7 +1037,7 @@ $ gain   &lt;dbl&gt; 0, 9, 17, 22, 34, 51, 64, 83, 107, 129, 157, 163</code></pr
 <span id="cb33-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Diet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-dplyr_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
+<img data-src="3-dplyr_files/figure-html/unnamed-chunk-31-1.png" width="672" class="r-stretch"></section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
@@ -1264,44 +1264,6 @@ $ gain   &lt;dbl&gt; 0, 9, 17, 22, 34, 51, 64, 83, 107, 129, 157, 163</code></pr
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <!-- Created with Inkscape (https://www.inkscape.org/) -->
 
 <svg
@@ -10,6 +11,19 @@
    xmlns:xlink="https://www.w3.org/1999/xlink"
    xmlns:sodipodi="https://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="https://www.inkscape.org/namespaces/inkscape"
+=======
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
    width="669.01099"
    height="588.56006"
    id="svg2"
@@ -738,7 +752,11 @@
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
+<<<<<<< HEAD
            rdf:resource="https://purl.org/dc/dcmitype/StillImage" />
+=======
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
         <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>

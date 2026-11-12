@@ -588,8 +588,7 @@ df2 %>% separate(y, c("City", "State"), sep = ", ")
 
 The Iowa Data Portal is a wealth of information on and about the State of Iowa. 
 
-The website 
-[Campaign Expenditures](https://data.iowa.gov/catalog/dataset/917) provides data on campaign expenditures. The code below reads the data into an R session.
+The website [Campaign Expenditures](https://data.iowa.gov/catalog/dataset/917) provides data on campaign expenditures. The code below reads the data into an R session.
 
 
 ```{r echo=TRUE, message=FALSE}

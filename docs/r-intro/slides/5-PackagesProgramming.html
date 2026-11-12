@@ -215,8 +215,10 @@
 <ul>
 <li><p>How do I locate a package with the desired function?</p></li>
 <li><p>Google (“R project” + search term works well)</p></li>
-<li><p>R website task views to search relevant subjects: https://cran.r-project.org/web/views/</p></li>
-<li><p>??searchterm will search R help for pages related to the search term</p></li>
+</ul>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - R website task views to search relevant subjects: https://cran.r-project.org/web/views/ ======= - R website task views to search relevant subjects: http://cran.r-project.org/web/views/ &gt;&gt;&gt;&gt;&gt;&gt;&gt; cdf1ab2e50915b670d8ad486adbd58ae30b74dc4</p>
+<ul>
+<li>??searchterm will search R help for pages related to the search term</li>
 </ul>
 </section>
 <section id="handy-r-packages" class="slide level2">
@@ -363,7 +365,11 @@
 <section id="for-loop-example-1" class="slide level2">
 <h2>For Loop Example</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>final_shed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="sc">&lt;</span><span class="er">&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb15-2"><a></a>final_shed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data-vis-workshops.github.io/R-workshops/r-intro/data/daily_shedding.csv"</span>)</span>
+<span id="cb15-3"><a></a><span class="sc">==</span><span class="er">=====</span></span>
+<span id="cb15-4"><a></a>final_shed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://unl-statistics.github.io/R-workshops/r-intro/data/daily_shedding.csv"</span>)</span>
+<span id="cb15-5"><a></a><span class="sc">&gt;</span><span class="er">&gt;&gt;&gt;&gt;&gt;&gt;</span> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pig_weight"</span>, <span class="st">"total_shedding"</span>, <span class="st">"daily_shedding"</span>)</span>
@@ -626,44 +632,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

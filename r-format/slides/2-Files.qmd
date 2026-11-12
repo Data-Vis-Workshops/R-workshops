@@ -83,7 +83,11 @@ Have a look at the parameters of `read_csv` to solve the following problems:
 
 2.  Read everything EXCEPT the first two lines into an object called `midwest_data`
 
+<<<<<<< HEAD
 Hint: Visit https://data-vis-workshops.github.io/R-workshops/r-format/data/midwest.csv to download the data into your current working directory (`getwd()`) and look at it in Excel to help figure out what the issue is.
+=======
+Hint: Visit http://unl-statistics.github.io/R-workshops/r-format/data/midwest.csv to download the data into your current working directory (`getwd()`) and look at it in Excel to help figure out what the issue is.
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 
 ## Your Turn Solutions
 

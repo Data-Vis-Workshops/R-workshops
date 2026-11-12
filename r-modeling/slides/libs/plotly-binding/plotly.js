@@ -377,7 +377,11 @@ HTMLWidgets.widget({
         
         // set defaults for this keySet
         // note that we don't track the nested property (yet) since we always 
+<<<<<<< HEAD
         // emit the union -- https://cpsievert.github.io/talks/20161212b/#21
+=======
+        // emit the union -- http://cpsievert.github.io/talks/20161212b/#21
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
         keysBySet[trace.set] = keysBySet[trace.set] || {
           value: [],
           _isSimpleKey: trace._isSimpleKey
@@ -392,7 +396,11 @@ HTMLWidgets.widget({
         // entire key attached to this trace, which is useful for,
         // say clicking on a fitted line to select corresponding observations 
         var key = trace._isSimpleKey ? trace.key : Array.isArray(ptNum) ? ptNum.map(function(idx) { return trace.key[idx]; }) : trace.key[ptNum];
+<<<<<<< HEAD
         // https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays-in-javascript
+=======
+        // http://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays-in-javascript
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
         var keyFlat = trace._isNestedKey ? [].concat.apply([], key) : key;
         
         // TODO: better to only add new values?

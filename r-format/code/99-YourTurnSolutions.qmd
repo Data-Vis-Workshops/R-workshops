@@ -199,6 +199,7 @@ Download the data on [Iowa Campaign Contributions](https://data.iowa.gov/catalog
 ```{r, message=FALSE}
 # url <- "https://data.iowa.gov/api/views/3adi-mht4/rows.csv"
 # campaign <- readr::read_csv(url)
+
 ```
 
 **Solution**<br> -Date is text, in the format of Month/Day/Year (Messy 2)<br> -City coordinates are a combination of City name, state, zip code and geographic latitude and longitude. (Messy 2) <br> -Expenditure amount is a textual expression, not a number (Messy different)<br> -No Messy 1? - problems of type Messy 1 are typically hard to detect and often up to interpretation/dependent on the analysis to be done. <br>
@@ -213,6 +214,7 @@ Spread the data such that you can draw scatterplots of values for men against wo
 
 ```{r, message=FALSE}
 occupation <- read_csv("https://data-vis-workshops.github.io/R-workshops/r-format/data/occupation-1870.csv")
+
 occupation_long <- occupation %>% 
   pivot_longer(Agriculture.Male:School.Female,names_to = "Occupation", values_to = "Measurement") %>%
   separate(Occupation, c("Occupation", "Gender"), sep="\\.") %>%

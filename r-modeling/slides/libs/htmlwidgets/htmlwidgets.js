@@ -127,7 +127,11 @@
     }
   }
 
+<<<<<<< HEAD
   // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+=======
+  // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
   function escapeRegExp(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   }

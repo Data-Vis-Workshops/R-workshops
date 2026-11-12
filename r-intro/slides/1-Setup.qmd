@@ -34,7 +34,11 @@ What do you know already?
 
 Hopefully this is done already. If not, for Windows or OS X:
 
+<<<<<<< HEAD
 -   Go to https://www.r-project.org/
+=======
+-   Go to http://www.r-project.org/
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 
 -   Click the CRAN link on the left, and pick a download site (0-Cloud is a good choice)
 

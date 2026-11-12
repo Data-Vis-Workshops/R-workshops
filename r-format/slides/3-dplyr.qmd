@@ -460,6 +460,7 @@ From the help file:
 
 ![](https://www.kenaifeed.com/wp-content/uploads/2015/03/chicks.jpg){fig-align="center"}
 
+
 ## Your Turn {.inverse}
 
 1.  Create a line plot with each line representing the weight of each Chick

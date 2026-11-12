@@ -69,7 +69,11 @@ help(glmer)
 **Data** The number of insects killed at various doses of insecticide.
 
 ```{r, insects-data-echo, echo = T, purl = T, eval = F}
+<<<<<<< HEAD
 insects_data <- read_csv("https://data-vis-workshops.github.io/R-workshops/r-modeling/data/insects.csv")
+=======
+insects_data <- read_csv("https://unl-statistics.github.io/R-workshops/r-modeling/data/insects.csv")
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 head(insects_data)
 ```
 

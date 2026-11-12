@@ -1,6 +1,10 @@
 /*
  * Removing odd borders from image,
+<<<<<<< HEAD
  * source: https://stackoverflow.com/questions/23082660/how-to-style-images-in-reveal-js
+=======
+ * source: http://stackoverflow.com/questions/23082660/how-to-style-images-in-reveal-js
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
  */
 /*.reveal section img {
   margin: 0px;

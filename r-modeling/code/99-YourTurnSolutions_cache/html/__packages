@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+>>>>>>> cdf1ab2e50915b670d8ad486adbd58ae30b74dc4
 tidyverse
 ggplot2
 tibble
