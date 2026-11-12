@@ -1,0 +1,29 @@
+project:
+  type: website
+  pre-render: create_R_files.R
+  output-dir: docs
+  
+execute:
+  freeze: auto
+  
+website:
+  title: "R Workshops"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Introduction to R"
+        href: r-intro/index.qmd
+      - text: "Graphics with ggplot2"
+        href: r-graphics/index.qmd
+      - text: "Data Wrangling"
+        href: r-format/index.qmd
+      - text: "Modeling"
+        href: r-modeling/index.qmd
+            
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    page-layout: full

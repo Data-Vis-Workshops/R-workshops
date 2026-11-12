@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/.quarto/
+*/slides/*_cache
+_freeze
+2022-Recordings
+
+**/*.quarto_ipynb

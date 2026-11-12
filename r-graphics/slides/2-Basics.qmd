@@ -1,0 +1,532 @@
+---
+title: "Data Visualization"
+subtitle: "Using ggplot2"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	cache = TRUE
+)
+```
+
+```{r}
+library(ggplot2)
+library(ggsci)
+library(ggthemes)
+library(gridExtra)
+library(grid)
+library(dplyr)
+library(tidyr)
+library(kableExtra)
+
+grid_arrange_shared_legend <- function(..., ncol = length(list(...)), nrow = 1, position = c("bottom", "right")) {
+
+  plots <- list(...)
+  position <- match.arg(position)
+  g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+  lheight <- sum(legend$height)
+  lwidth <- sum(legend$width)
+  gl <- lapply(plots, function(x) x + theme(legend.position="none"))
+  gl <- c(gl, ncol = ncol, nrow = nrow)
+
+  combined <- switch(position,
+                     "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
+                                            legend,
+                                            ncol = 1,
+                                            heights = unit.c(unit(1, "npc") - lheight, lheight)),
+                     "right" = arrangeGrob(do.call(arrangeGrob, gl),
+                                           legend,
+                                           ncol = 2,
+                                           widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+  
+  grid.newpage()
+  grid.draw(combined)
+
+  # return gtable invisibly
+  invisible(combined)
+
+}
+
+```
+
+# BASICS
+
+## Why is data visualization important?
+
+<br/>
+
+Exploratory Data Analysis (EDA)
+
+<br/>
+
+Examples:
+
+-   Anscombe's Quartet Exercise
+
+
+## Anscombe's Quartet
+
+-   4 data sets that have nearly identical simple statistical properties that appear very different when graphed
+
+-   demonstrate both the importance of graphing data before analyzing it and the effect of outliers on statistical properties
+
+-   11 (x,y) points
+
+-   
+
+    ## the same mean, median, standard deviation, and correlation coefficient between x and y
+
+## Anscombe's Quartet: data {.smaller}
+
+:::: {.columns}
+
+::: {.column width="25%"}
+```{r, anscombe-set1}
+quartet_setI <- anscombe %>%
+  select(x1, y1) %>%
+  mutate(set = "I") %>%
+  rename(x = x1, 
+         y = y1)
+quartet_setI %>% select(x, y) %>% knitr::kable(caption = "Set I")%>%
+  kable_styling(font_size = 25)
+```
+:::
+
+::: {.column width="25%"}
+```{r anscombe-set2}
+quartet_setII <- anscombe %>%
+  select(x2, y2) %>%
+  mutate(set = "II") %>%
+  rename(x = x2, 
+         y = y2)
+quartet_setII %>% select(x, y) %>% knitr::kable(caption = "Set II")%>%
+  kable_styling(font_size = 25)
+```
+:::
+
+::: {.column width="25%"}
+```{r anscombe-set3}
+quartet_setIII <- anscombe %>%
+  select(x3, y3) %>%
+  mutate(set = "III") %>%
+  rename(x = x3, 
+         y = y3)
+quartet_setIII %>% select(x, y) %>% knitr::kable(caption = "Set III")%>%
+  kable_styling(font_size = 25)
+```
+:::
+
+::: {.column width="25%"}
+```{r anscombe-set4}
+quartet_setIV <- anscombe %>%
+  select(x4, y4) %>%
+  mutate(set = "IV") %>%
+  rename(x = x4, 
+         y = y4)
+quartet_setIV %>% select(x, y) %>% knitr::kable(caption = "Set IV")%>%
+  kable_styling(font_size = 25)
+```
+:::
+
+::::
+
+## Anscombe's Quartet: summary statistics
+
+<br> <br>
+
+```{r, quartet-summary}
+quartet <- rbind(quartet_setI,
+                 quartet_setII,
+                 quartet_setIII,
+                 quartet_setIV) %>%
+  select(set, x, y)
+
+quartet_summary <- quartet %>%
+  group_by(set) %>%
+  summarize("mean(x)"  = round(mean(x),2), 
+            "sd(x)"    = round(sd(x),2), 
+            "mean(y)"  = round(mean(y),2), 
+            "sd(y)"    = round(sd(y),2), 
+            "cor(x,y)" = round(cor(x,y),2)) %>% 
+  t()
+
+colnames(quartet_summary) <- quartet_summary[1,]
+quartet_summary <- quartet_summary[-1,] %>%
+  as.data.frame()
+
+quartet_summary %>%
+  knitr::kable(digits = 2)
+```
+
+::: notes
+each data set has the same mean, standard deviation, and correlation coefficient between x and y.
+:::
+
+## Anscombe's Quartet: plots
+
+```{r, , quartet-plots, fig.height = 7, fig.width = 7, fig.align = "center"}
+ggplot(quartet, aes(x, y)) + 
+  geom_point(colour = "green4", size = 2.5) + 
+  geom_smooth(method = lm, se = FALSE, colour = "gray", alpha = .5) +
+  facet_wrap(~ set) +
+  theme_bw() +
+  theme(aspect.ratio = 1,
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16),
+        strip.text = element_text(size = 16))
+```
+
+::: notes
+
+plot y versus x for each set with a linear regression trendline displayed on each plot:
+
+This classic example really illustrates the importance of looking at your data, not just the summary statistics and model parameters you compute from it.
+
+:::
+
+# Data Types, Formats, and Structures {.inverse}
+
+## Data
+
+Before it's possible to talk about a graphical grammar, it's important to know the type and format of the data you're working with.
+
+|      |
+|------|
+| Why? |
+
+-   the data contains all of the information you're trying to convey
+
+-   the appropriate graphical techniques depend on the kind of data that you are working with
+
+-   Working with R and ggplot is much easier if the data you use is in the right shape.
+
+
+## Data: levels of measurement {.smaller}
+
+::: columns
+::: column
+**Quantitative**:
+
+-   Continuous
+    -   e.g. height, weight
+-   Discrete
+    -   e.g. age in years\
+
+:::
+
+::: column
+
+**Qualitative**:  
+-   Nominal  
+    -   categories have no meaningful order
+
+    -   e.g. colors
+-   Ordinal
+    -   categories have order but no meaningful distance between categories
+
+    -   e.g. five star ratings
+
+:::
+:::
+
+
+## Data: Dimensionality, Form, and Type {.smaller}
+
+::: columns
+::: column
+
+**Dimensions**
+
+-   Univariate
+    -   1 variable
+-   Bivariate
+    -   2 variables
+-   Multivariate
+    -   2+ variables
+
+**Forms**
+
+-   Traditional
+
+-   Aggregated
+
+:::
+::: column
+**Types**
+
+-   Count
+
+    -   Word Frequency
+
+    -   Sports Statistics
+
+-   Time Series
+
+-   Spatial
+
+-   Time to Event
+
+    -   Survival
+
+    -   Reliability
+
+-   Categorical
+
+:::
+:::
+
+## Exploring Relationships {.smaller}
+
+-   Continuous vs. Continuous
+    -   scatter plot, line plot
+-   Continuous vs. Categorical
+    -   boxplots, dotcharts, multiple density plots, violin plots
+-   Categorical vs. Categorical
+    -   mosaicplots, side-by-side barplots
+-   Multidimensional
+
+<br>
+
+**Resources** 
+
++ [The Data Vis Project](https://datavizproject.com/)
+
++ [Data Visualization Catalogue](https://datavizcatalogue.com/)
+
+# Formating your data {.inverse}
+### A tidy data discussion
+
+
+
+## Data format
+
+-   Working with R and ggplot is much easier if the data you use is in the right shape.
+
+-   Unlike base graphics, ggplot works with dataframes and not individual vectors.
+
+-   All the data needed to make the plot is typically contained within the dataframe
+
+-   ggplot expects your data to be in a particular sort of shape - "tidy data"
+
+
+## Same data, different layouts
+<font size="5">  
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Option 1:**
+
++--------------+-------------+-------------+
+| Name         | Treatment A | Treatment B |
++==============+=============+=============+
+| John Smith   | NA          | 18          |
++--------------+-------------+-------------+
+| Jane Doe     | 4           | 1           |
++--------------+-------------+-------------+
+| Mary Johnson | 6           | 7           |
++--------------+-------------+-------------+
+
+**Option 2:**
+
++--------------+-------------+-------------+--------------+
+| Treatment    | John Smith  | Jane Doe    | Mary Johnson |
++==============+=============+=============+==============+
+|      A       | NA          |   4         |  6           |
++--------------+-------------+-------------+--------------+
+|      B       | 18          | 1           |  7           |
++--------------+-------------+-------------+--------------+
+:::
+
+::: {.column width="50%"}
+**Option 3:**
+
++--------------+-----------+-------------+
+| Name         | Treatment | Measurement |
++==============+===========+=============+
+| John Smith   | A         | NA          |
++--------------+-----------+-------------+
+| John Smith   | B         | 18          |
++--------------+-----------+-------------+
+| Jane Doe     | A         | 4           |
++--------------+-----------+-------------+
+| Jane Doe     | B         | 1           |
++--------------+-----------+-------------+
+| Mary Johnson | A         | 6           |
++--------------+-----------+-------------+
+| Mary Johnson | B         | 7           |
++--------------+-----------+-------------+
+:::
+::::
+
+</font>
+
+```{r, eval = FALSE}
+preg <- read.csv("data/preg.csv", stringsAsFactors = FALSE)
+preg
+knitr::kable(preg, format = 'html')
+preg2 <- read.csv("data/preg2.csv", stringsAsFactors = FALSE)
+preg2
+knitr::kable(preg2, format = 'html')
+
+preg3 <- preg %>% gather(treatment, measurement, -name)
+preg3
+
+```
+
+::: notes
+
+The data is the same, but the layout is different. Our vocabulary of rows and columns is simply not rich enough to describe why the two tables represent the same data. In addition to appearance, we need a way to describe the underlying semantics, or meaning, of the values displayed in the table
+
+:::
+
+## Wide Format vs. Long Format {.smaller}
+
+::: columns
+::: column
+
+**Wide format**
+
+-   some variables are spread out across columns.
+
+-   typically uses less space to display
+
+-   how you would typically choose to present your data
+
+-   far less repetition of labels and row elements
+
+![](images/tablewide2.png)
+
+::: 
+::: column
+
+**Long format**
+
+-   each variable is a column
+
+-   each observation is a row
+
+-   is likely not the data's most compact form
+
+```{r fig.width=3, fig.height=2.7,echo=FALSE, fig.align="center"}
+library(png)
+library(grid)
+img <- readPNG("images/tablelong2.png")
+ grid.raster(img)
+```
+
+:::
+:::
+
+
+## Tidy Data {.r-fit-text}
+
+![Like families..., by [Allison Horst](https://www.allisonhorst.com/) ](images/tidy-data-0.jpg){fig-alt="Tidy Data" fig-align="center" width=800 height=550}
+
+
+## Tidy Data {.smaller}
+
+-   Each variable is a column
+
+-   Each observation is a row
+
+-   Each type of observational unit forms a table
+
+<font size="5"> 
+
++--------------+-----------+-------------+
+| Name         | Treatment | Measurement |
++==============+===========+=============+
+| John Smith   | A         | NA          |
++--------------+-----------+-------------+
+| John Smith   | B         | 18          |
++--------------+-----------+-------------+
+| Jane Doe     | A         | 4           |
++--------------+-----------+-------------+
+| Jane Doe     | B         | 1           |
++--------------+-----------+-------------+
+| Mary Johnson | A         | 6           |
++--------------+-----------+-------------+
+| Mary Johnson | B         | 7           |
++--------------+-----------+-------------+
+
+</font>
+
+## Messy data {.smaller}
+
+ *Happy families are all alike; every unhappy family is unhappy in its own way. - Leo Tolstoy*  
+![
+Comparison of work benches, by [Allison Horst](https://www.allisonhorst.com/)](images/tidy-data.jpg){fig-alt="Tidy Data" width=800 height=500 fig-align="center"}
+
+
+## Messy data 
+
+*Happy families are all alike; every unhappy family is unhappy in its own way. - Leo Tolstoy*
+
+
+**Five main ways tables of data tend not to be tidy:**
+
+1.  Column headers are values, not variable names.
+
+2.  Multiple variables are stored in one column.
+
+3.  Variables are stored in both rows and columns.
+
+4.  Multiple types of observational units are stored in the same table.
+
+5.  A single observational unit is stored in multiple tables.
+
+## Tidy your data
+
+```{r, eval=FALSE, echo=TRUE}
+data(french_fries, package = "reshape2")
+head(french_fries)
+```
+
+**Wide Format:**
+
+```{r, eval=T, echo=F}
+library(reshape2)
+data(french_fries)
+head(french_fries)%>% knitr::kable(row.names = F)%>%
+  kable_styling(font_size = 25)
+```
+
+## Tidy your data {.smaller}
+
+```{r, eval=FALSE, echo=TRUE}
+french_fries_long <- french_fries %>% 
+  pivot_longer(cols = c("potato":"painty"), #<<
+               names_to = "variable", #<<
+               values_to = "value") #<<
+head(french_fries_long)
+```
+
+**Long Format:**
+
+```{r, eval=T, echo=F}
+french_fries_long <- french_fries %>% 
+  pivot_longer(cols = c("potato":"painty"),
+               names_to = "variable",
+               values_to = "value")
+head(french_fries_long) %>% knitr::kable(row.names = F)%>%
+  kable_styling(font_size = 25)
+```
+
+More on tidy data later!
+
+
+# Your turn! {.inverse}
+
+```{r preg, echo = T, eval = T}
+experiment <- tibble(outcome = c("success", "failure"),
+               dog = c(15, 10),
+               cat = c(20, 12))
+experiment
+```
+
+To tidy the `experiment` table use `pivot_longer()` to create a long table.
